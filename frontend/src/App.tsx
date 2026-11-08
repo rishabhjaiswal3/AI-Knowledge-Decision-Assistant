@@ -3,6 +3,8 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { useAuth } from "./lib/useAuth";
 import AuthPage from "./pages/AuthPage";
 import DashboardLayout from "./pages/DashboardLayout";
+import Assistant from "./pages/Assistant";
+import Documents from "./pages/Documents";
 import Home from "./pages/Home";
 
 function Protected({ children }: { children: ReactNode }) {
@@ -24,6 +26,8 @@ export default function App() {
       <Route path="/register" element={<GuestOnly><AuthPage mode="register" /></GuestOnly>} />
       <Route path="/dashboard" element={<Protected><DashboardLayout /></Protected>}>
         <Route index element={<Home />} />
+        <Route path="documents" element={<Documents />} />
+        <Route path="assistant" element={<Assistant />} />
       </Route>
       <Route path="*" element={<Navigate to="/dashboard" replace />} />
     </Routes>

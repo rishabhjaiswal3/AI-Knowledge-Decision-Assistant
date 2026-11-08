@@ -1,10 +1,12 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import { LayoutGrid, LogOut } from "lucide-react";
+import { FileText, LayoutGrid, LogOut, MessageSquare } from "lucide-react";
 import Logo from "../components/Logo";
 import { useAuth } from "../lib/useAuth";
 
 const NAV = [
   { to: "/dashboard", label: "Home", icon: LayoutGrid, end: true },
+  { to: "/dashboard/documents", label: "Documents", icon: FileText },
+  { to: "/dashboard/assistant", label: "Assistant", icon: MessageSquare },
 ];
 
 export default function DashboardLayout() {
