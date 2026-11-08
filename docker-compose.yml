@@ -1,0 +1,19 @@
+# Local development database: MongoDB Atlas Local (includes Atlas Vector Search
+# and Atlas Search). Credentials come from .env (see .env.example); nothing
+# secret lives in this file. Production uses MongoDB Atlas.
+services:
+  mongo:
+    image: mongodb/mongodb-atlas-local:8.0
+    environment:
+      MONGODB_INITDB_ROOT_USERNAME: ${MONGO_USER:?Set MONGO_USER in .env}
+      MONGODB_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD:?Set MONGO_PASSWORD in .env}
+    ports:
+      # Reachable from this machine only
+      - "127.0.0.1:${MONGO_PORT:-27018}:27017"
+    volumes:
+      - mongo-data:/data/db
+      - mongo-config:/data/configdb
+
+volumes:
+  mongo-data:
+  mongo-config:
